@@ -1,16 +1,15 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  print('packer')
-	packer_bootstrap = fn.system({
-		'git',
-		'clone',
-		'--depth',
-		'1',
-		'https://github.com/wbthomason/packer.nvim',
-		install_path,
-	})
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated
 vim.cmd([[
@@ -40,15 +39,7 @@ return packer.startup(function(use)
 
         --use('lifepillar/vim-gruvbox8')
 	use('sainnhe/gruvbox-material')
-
-
-	use({
-		'nvim-lualine/lualine.nvim',
-		-- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	})
-
-	use('kyazdani42/nvim-tree.lua')
-
+        --
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
 		packer.sync()
