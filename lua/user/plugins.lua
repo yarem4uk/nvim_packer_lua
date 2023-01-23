@@ -15,7 +15,7 @@ local packer_bootstrap = ensure_packer()
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost user/plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
 
@@ -39,6 +39,20 @@ return packer.startup(function(use)
 
         --use('lifepillar/vim-gruvbox8')
 	use('sainnhe/gruvbox-material')
+
+
+        -- lualine
+	use({
+		'nvim-lualine/lualine.nvim',
+		-- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	})
+
+        -- lsp
+        use {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        }
         --
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
