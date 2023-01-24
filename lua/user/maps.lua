@@ -56,7 +56,7 @@ map('', '<C-j>', '<C-w><Down>', silent)
 map('', '<C-l>', '<C-w><Right>', silent)
 map('', '<C-h>', '<C-w><Left>', silent)
 
-map('', '<leader>r', ':Telescope find_files<cr>', silent)
+map('', '<leader>f', ':Telescope find_files<cr>', silent)
 map('', '<leader>g', ':Telescope live_grep<cr>', silent)
 map('', '<leader>b', ':Telescope buffers<cr>', silent)
 
@@ -83,7 +83,7 @@ map('n', '<leader>u', [[mQviwU'Q]], silent)
 map('n', '<leader>l', [[mQviwu'Q]], silent)
 
 -- formatting
-map('n', '<leader>f', ':Format<cr>', silent)
+-- map('n', '<leader>f', ':Format<cr>', silent)
 
 -- curl
 map('n', '<leader>m', ':Curl<cr>', silent)

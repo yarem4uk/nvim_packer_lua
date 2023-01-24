@@ -1,5 +1,5 @@
-local on_attach = function (_, bufnr)
-  local nmap = function (keys, func, desc)
+local on_attach = function(_, bufnr)
+  local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
     end
@@ -12,7 +12,7 @@ local on_attach = function (_, bufnr)
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', '')
-  nmap('gj', '<cmd>lua vim.diagnostic.goto_next()<cr>',  '')
+  nmap('gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', '')
 end
 
 local servers = {
@@ -29,7 +29,7 @@ local servers = {
       },
       telemetry = { enable = false },
       diagnostics = {
-        globals = {'vim', 'use'}
+        globals = { 'vim', 'use' }
       },
     },
   },
