@@ -1,6 +1,5 @@
 <leader>b', ':Telescope buffers<cr>', silent)
 <leader>e' = actions.close,
-<leader>f', ':Format<cr>', silent)
 <leader>f', ':Telescope find_files<cr>', silent)
 <leader>g', ':Telescope live_grep<cr>', silent)
 <leader>h', "<cmd>lua require('user.telescope').find_vim_dot_files()<cr>", silent)

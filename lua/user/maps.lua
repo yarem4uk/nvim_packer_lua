@@ -59,6 +59,8 @@ map('', '<C-h>', '<C-w><Left>', silent)
 map('', '<leader>f', ':Telescope find_files<cr>', silent)
 map('', '<leader>g', ':Telescope live_grep<cr>', silent)
 map('', '<leader>b', ':Telescope buffers<cr>', silent)
+map('', '<leader>sh', ':Telescope help_tags<cr>', silent)
+-- map('', '<leader>sw', ':Telescope grep_string<cr>', silent)
 
 -- open luavim files by telescope
 -- map('n', [[<C-\>]], "<cmd>lua require('user.telescope').find_vim_dot_files()<cr>", silent)

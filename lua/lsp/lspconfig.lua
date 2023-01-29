@@ -13,6 +13,10 @@ local on_attach = function(_, bufnr)
   -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', '')
   nmap('gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', '')
+
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 end
 
 local servers = {

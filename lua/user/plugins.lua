@@ -40,6 +40,8 @@ return packer.startup(function(use)
   --use('lifepillar/vim-gruvbox8')
   use('sainnhe/gruvbox-material')
 
+  use('kyazdani42/nvim-tree.lua')
+
 
   -- lualine
   use({
@@ -57,8 +59,9 @@ return packer.startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp'
-    -- requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    -- 'hrsh7th/cmp-nvim-lsp'
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    -- requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
   }
 
   -- treesitter
@@ -72,7 +75,7 @@ return packer.startup(function(use)
 
   -- telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
     -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
