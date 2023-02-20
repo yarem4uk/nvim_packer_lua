@@ -23,7 +23,7 @@ local on_attach = function(_, bufnr)
     -- buffer = bufnr,
     callback = function()
       vim.lsp.buf.format()
-    end
+    end,
   })
 end
 
@@ -33,7 +33,8 @@ local servers = {
   tsserver = {},
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false,
+      workspace = {
+        checkThirdParty = false,
         library = {
           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
           [vim.fn.stdpath('config') .. '/lua'] = true,
@@ -41,7 +42,7 @@ local servers = {
       },
       telemetry = { enable = false },
       diagnostics = {
-        globals = { 'vim', 'use' }
+        globals = { 'vim', 'use' },
       },
     },
   },
@@ -60,22 +61,20 @@ if not cmp_ok then
 end
 
 mason_lspconfig.setup({
-  ensure_installed = vim.tbl_keys(servers)
+  ensure_installed = vim.tbl_keys(servers),
 })
-
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-
-mason_lspconfig.setup_handlers {
+mason_lspconfig.setup_handlers({
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    require('lspconfig')[server_name].setup({
 
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
-    }
+    })
   end,
-}
+})

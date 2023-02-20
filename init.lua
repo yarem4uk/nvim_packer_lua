@@ -9,5 +9,6 @@ require('user.telescope')
 require('user.cmp')
 -- require('user.nvimtree')
 require('user.luasnip')
+require('user.null-ls')
 
 require('lsp.lspconfig')

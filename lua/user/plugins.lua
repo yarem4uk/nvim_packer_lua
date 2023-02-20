@@ -64,6 +64,9 @@ return packer.startup(function(use)
     -- requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
   }
 
+  --null-ls
+  use('jose-elias-alvarez/null-ls.nvim')
+
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
