@@ -8,9 +8,9 @@ if not lua_ok then
   return
 end
 
-cmp.setup {
+cmp.setup({
   -- completion = {
-    -- autocomplete = false,
+  -- autocomplete = false,
   -- },
   snippet = {
     expand = function(args)
@@ -18,14 +18,14 @@ cmp.setup {
     end,
   },
 
-  mapping = cmp.mapping.preset.insert {
+  mapping = cmp.mapping.preset.insert({
     -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
     -- ['<c-n>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    },
+    }),
     ['<c-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -44,9 +44,9 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-  },
+  }),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-}
+})

@@ -7,7 +7,7 @@ require('user.lualine')
 require('user.treesitter')
 require('user.telescope')
 require('user.cmp')
--- require('user.nvimtree')
+require('user.nvimtree')
 require('user.luasnip')
 require('user.null-ls')
 
