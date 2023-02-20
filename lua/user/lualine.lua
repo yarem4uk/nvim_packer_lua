@@ -7,7 +7,11 @@ lualine.setup({
   options = {
     disabled_filetypes = { 'NvimTree' },
     icons_enabled = false,
+    -- theme = 'gruvbox',
     theme = 'gruvbox-material',
+    -- theme = 'everforest',
+    -- theme = 'iceberg_light',
+    -- theme = 'rose-pine',
     section_separators = '',
     component_separators = '',
     always_divide_middle = false,

@@ -9,6 +9,7 @@ local builtin = require('telescope.builtin')
 telescope.setup({
   defaults = {
     -- sorting_strategy = 'ascending',
+    path_display = { 'smart' },
     prompt_prefix = '-> ',
 
     mappings = {

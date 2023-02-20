@@ -6,7 +6,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-
 --local map = vim.api.nvim_set_keymap
 --local default = { noremap = true, silent = true }
 
@@ -19,15 +18,15 @@ for i = 1, #disabling_keys do
   local mode = { 'i', 'c', '' }
   for m = 1, #mode do
     map(mode[m], disabling_keys[i], '<NOP>', silent)
- end
+  end
 end
 
 map('', '<leader><leader>', '<C-^>', silent)
 map('i', ';e', '<esc>', silent)
 
-map('i', 'sm', '<cr>', silent)
-map('n', 'sm', '<cr>', silent)
-map('c', 'sm', '<cr>', silent)
+-- map('i', 'sm', '<cr>', silent)
+-- map('n', 'sm', '<cr>', silent)
+-- map('c', 'sm', '<cr>', silent)
 
 map('c', '<c-j>', '<Down>', {})
 
@@ -35,7 +34,6 @@ map('i', ',w', '<esc>:w<cr>', silent)
 map('', ',w', ':w<cr>', silent)
 
 -- COMMAND MAPPING
-
 map('', [[']], [[`]], silent)
 map('', [[`]], [[']], silent)
 
@@ -59,8 +57,6 @@ map('', '<C-h>', '<C-w><Left>', silent)
 map('', '<leader>f', ':Telescope find_files<cr>', silent)
 map('', '<leader>g', ':Telescope live_grep<cr>', silent)
 map('', '<leader>b', ':Telescope buffers<cr>', silent)
-map('', '<leader>sh', ':Telescope help_tags<cr>', silent)
--- map('', '<leader>sw', ':Telescope grep_string<cr>', silent)
 
 -- open luavim files by telescope
 -- map('n', [[<C-\>]], "<cmd>lua require('user.telescope').find_vim_dot_files()<cr>", silent)
@@ -74,8 +70,8 @@ map('o', 'im', 'i[', silent)
 map('o', 'in', ':<c-u>normal! f(vi(<cr>', silent)
 map('o', 'il', ':<c-u>normal! F)vi(<cr>', silent)
 
-map('i', 'AA', '<esc>A', silent)
-map('i', 'AA', '<esc>A', silent)
+-- map('i', 'AA', '<esc>A', silent)
+-- map('n', 'AA', '<esc>A', silent)
 -- map('i', '<c-i>', '<tbs>', silent)
 
 -- LEADER MAPING

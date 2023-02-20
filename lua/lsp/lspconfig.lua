@@ -9,7 +9,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('<leader>K', vim.lsp.buf.hover, 'Hover Documentation')
   -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', '')
   nmap('gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', '')
@@ -17,13 +17,21 @@ local on_attach = function(_, bufnr)
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    group = vim.api.nvim_create_augroup('LspFormatting', { clear = true }),
+    -- buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format()
+    end
+  })
 end
 
 local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false,
         library = {
@@ -40,7 +48,6 @@ local servers = {
 }
 
 require('mason').setup()
-
 
 local mason_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not mason_ok then

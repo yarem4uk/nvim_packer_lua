@@ -2,6 +2,7 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 
+
 g.mapleader = ' '
 
 cmd('autocmd!')
@@ -43,7 +44,7 @@ opt.smartindent = true
 opt.foldmethod = 'indent'
 opt.foldlevelstart = 99
 
-opt.path:append { '**' } 
+opt.path:append { '**' }
 opt.wildignore:append { '*/node_modules/*' }
 
 -- vim.api.nvim_create_autocmd('IsertLeave', {
@@ -60,16 +61,16 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.laststatus = 2
 
+
+-- everforest
+-- g.everforeset_background = 'soft'
+-- g.everforest_transparent_background = 1
+
 -- gruvbox-material
 g.gruvbox_material_background = 'soft'
 g.gruvbox_material_transparent_background = 1
 
--- ultisnips
--- g.UltiSnipsSnippetDirectories = { '~/.config/nvim/UltiSnips', 'UltiSnips' }
-g.UltiSnipsUsePythonVersion = 3
--- g.UltiSnipsExpandTrigger='<c-i>'
-g.UltiSnipsJumpForwardTrigger = '<c-j>'
-g.UltiSnipsJumpBackwardTrigger = '<c-k>'
+
 
 cmd([[
   au BufNewFile,BufRead *.ejs set ft=html
