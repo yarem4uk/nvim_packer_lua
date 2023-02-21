@@ -2,7 +2,6 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 
-
 g.mapleader = ' '
 
 cmd('autocmd!')
@@ -11,9 +10,7 @@ vim.scriptencoding = 'utf-8'
 opt.encoding = 'utf-8'
 opt.fileencoding = 'utf-8'
 
-
 -- cmd('source ~/.config/nvim/abbreviations.vim')
-
 
 opt.title = true
 opt.ttyfast = true
@@ -44,23 +41,21 @@ opt.smartindent = true
 opt.foldmethod = 'indent'
 opt.foldlevelstart = 99
 
-opt.path:append { '**' }
-opt.wildignore:append { '*/node_modules/*' }
+opt.path:append({ '**' })
+opt.wildignore:append({ '*/node_modules/*' })
 
 -- vim.api.nvim_create_autocmd('IsertLeave', {
 --   pattern = '*',
 --   command = 'set nopaste'
 -- })
 
-opt.formatoptions:append { 'r' }
-
+opt.formatoptions:append({ 'r' })
 
 -- opt.t_Co=256
 opt.hls = false
 opt.ignorecase = true
 opt.smartcase = true
 opt.laststatus = 2
-
 
 -- everforest
 -- g.everforeset_background = 'soft'
@@ -69,8 +64,6 @@ opt.laststatus = 2
 -- gruvbox-material
 g.gruvbox_material_background = 'soft'
 g.gruvbox_material_transparent_background = 1
-
-
 
 cmd([[
   au BufNewFile,BufRead *.ejs set ft=html

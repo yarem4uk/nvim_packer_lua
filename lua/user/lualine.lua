@@ -5,9 +5,11 @@ end
 
 lualine.setup({
   options = {
-    disabled_filetypes = { 'NvimTree' },
+    -- disabled_filetypes = { 'NvimTree' },
+    ignore_focus = { 'NvimTree' },
     icons_enabled = false,
     -- theme = 'gruvbox',
+    -- theme = 'auto',
     theme = 'gruvbox-material',
     -- theme = 'everforest',
     -- theme = 'iceberg_light',
@@ -15,6 +17,7 @@ lualine.setup({
     section_separators = '',
     component_separators = '',
     always_divide_middle = false,
+    globalstatus = false,
   },
   sections = {
     lualine_b = {},
@@ -38,8 +41,9 @@ lualine.setup({
     },
     lualine_y = {},
     lualine_z = {
-      'location',
-      color = nil,
+      -- 'filetype',
+      -- 'location',
+      -- color = nil,
     },
   },
   inactive_sections = {
@@ -48,10 +52,10 @@ lualine.setup({
     lualine_c = {
       {
         'filename',
-        path = 1,
-        symbols = {
-          unnamed = '',
-        },
+        path = 2,
+        -- symbols = {
+        --   unnamed = '',
+        -- },
       },
     },
     -- lualine_y = {},
