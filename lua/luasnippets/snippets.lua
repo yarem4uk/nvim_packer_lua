@@ -8,8 +8,8 @@ local s = ls.s
 -- This is a format node.
 -- It takes a format string, and a list of nodes
 -- fmt(<fmt_string>, {...nodes})
-local fmt = require("luasnip.extras.fmt").fmt
-local fmta = require("luasnip.extras.fmt").fmta
+local fmt = require('luasnip.extras.fmt').fmt
+local fmta = require('luasnip.extras.fmt').fmta
 
 -- This is an insert node
 -- It takes a position (like $1) and optionally some default text
@@ -22,54 +22,54 @@ local t = ls.text_node
 local f = ls.function_node
 -- local sn = ls.snippet_node
 
-
 -- Repeats a node
 -- rep(<position>)
 -- local rep = require("luasnip.extras").rep
 
-ls.add_snippets("all", {
-  s({ trig = '(%w*[^douiI])mm', wordTrig = false, regTrig = true, hidden = false }, fmta(
-    '<><><>', {
-    f(function(_, snip)
-      return snip.captures[1] .. '['
-    end),
-    i(1),
-    t(']'),
-  }
-  )),
+ls.add_snippets('all', {
+  s(
+    { trig = '(%w*[^douiI])mm', wordTrig = false, regTrig = true, hidden = false },
+    fmta('<><><>', {
+      f(function(_, snip)
+        return snip.captures[1] .. '['
+      end),
+      i(1),
+      t(']'),
+    })
+  ),
 
-  s({ trig = '(%w*[^douiI])jj', wordTrig = false, regTrig = true, hidden = false }, fmta(
-    '<><><>', {
-    f(function(_, snip)
-      return snip.captures[1] .. '('
-    end),
-    i(1),
-    t(')'),
-  }
-  )),
+  s(
+    { trig = '(%w*[^douiI])jj', wordTrig = false, regTrig = true, hidden = false },
+    fmta('<><><>', {
+      f(function(_, snip)
+        return snip.captures[1] .. '('
+      end),
+      i(1),
+      t(')'),
+    })
+  ),
 
-  s({ trig = '([^%a])dmm', wordTrig = false, regTrig = true, hidden = false }, fmt("[[{}]]{}", { i(1), i(0) })),
+  s({ trig = '([^%a])dmm', wordTrig = false, regTrig = true, hidden = false }, fmt('[[{}]]{}', { i(1), i(0) })),
 
-  s({ trig = '([^%a])MM', regTrig = true, hidden = false }, fmta("{<>}<>", { i(1), i(0) })),
+  s({ trig = '([^%a])MM', regTrig = true, hidden = false }, fmta('{<>}<>', { i(1), i(0) })),
 
-  s({ trig = '%.or', regTrig = true, hidden = true },
-    fmt("|| {}", { i(0) })),
+  s({ trig = '%.or', regTrig = true, hidden = true }, fmt('|| {}', { i(0) })),
 
-  s({ trig = '%.and', regTrig = true, hidden = true },
-    fmt("&& {}", { i(0) })),
+  s({ trig = '%.and', regTrig = true, hidden = true }, fmt('&& {}', { i(0) })),
 
-  s({ trig = '(%w+(.%w+))(%.dd)', regTrig = true, hidden = false },
+  s(
+    { trig = '(%w+(.%w+))(%.dd)', regTrig = true, hidden = false },
     f(function(_, snip)
       return '{ ' .. snip.captures[1] .. ' }'
-    end))
-
-
+    end)
+  ),
 }, {
-  type = "autosnippets"
+  type = 'autosnippets',
 })
 
-ls.add_snippets("lua", {
-  s("fn", fmt("function({})\n  {}\nend", { i(1), i(2, 'pass') })),
+ls.add_snippets('lua', {
+  s('fn', fmt('function({})\n  {}\nend', { i(1), i(2, 'pass') })),
+  s('print', fmt("print('{}:', {}){}", { i(1), i(2), i(0) })),
 }, {
-  type = 'autosnippets'
+  type = 'autosnippets',
 })

@@ -36,8 +36,10 @@ return packer.startup(function(use)
   use('tpope/vim-repeat')
   use('tpope/vim-commentary')
 
+  -- themes
   --use('lifepillar/vim-gruvbox8')
   use('sainnhe/gruvbox-material')
+  -- use('sainnhe/everforest')
 
   -- tree
   use({
