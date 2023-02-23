@@ -92,7 +92,8 @@ return packer.startup(function(use)
   })
 
   -- Fuzzy Finder for telescope
-  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable('make') == 1 })
+  -- use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable('make') == 1 })
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   --
   -- Automatically set up your configuration after cloning packer.nvim

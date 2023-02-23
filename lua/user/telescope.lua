@@ -33,13 +33,13 @@ telescope.setup({
     },
   },
   pickers = {
-    -- find_files = {
-    --       find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
-    --     },
-    -- buffers = {
-    --   ignore_current_buffers = true,
-    --   sort_mru = true
-    -- }
+    find_files = {
+      find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+    },
+    buffers = {
+      -- ignore_current_buffers = true,
+      -- sort_mru = true,
+    },
   },
 })
 

@@ -7,6 +7,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
+  jsonls = {},
   lua_ls = {
     Lua = {
       workspace = {
