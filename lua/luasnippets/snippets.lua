@@ -39,7 +39,7 @@ ls.add_snippets('all', {
   ),
 
   s(
-    { trig = '(%w*[^douiI])jj', wordTrig = false, regTrig = true, hidden = false },
+    { trig = '(%w*)jj', wordTrig = false, regTrig = true, hidden = false },
     fmta('<><><>', {
       f(function(_, snip)
         return snip.captures[1] .. '('

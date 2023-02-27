@@ -60,10 +60,36 @@ ls.add_snippets('javascript', {
     })
   ),
 
-  --simple function
+  -- simple function
   s(
     { trig = 'fn', regTrig = true, hidden = true },
     fmta('const <> = (<>) <> {\n  <>\n<>}', { i(1, 'name'), i(2), t('=>'), i(3, 'statement'), i(0) })
+  ),
+  -- map
+  s(
+    { trig = '(%w+)%.map', regTrig = true, hidden = true },
+    fmta('<>.map((<>) <> {\n  <>\n})\n<>', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1, 'item'),
+      t('=>'),
+      i(2),
+      i(0),
+    })
+  ),
+  -- forEach
+  s(
+    { trig = '(%w+)%.for', regTrig = true, hidden = true },
+    fmta('<>.forEach((<>) <> {\n  <>\n})\n<>', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1, 'el'),
+      t('=>'),
+      i(2),
+      i(0),
+    })
   ),
 }, {
   type = 'autosnippets',
