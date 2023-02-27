@@ -56,7 +56,7 @@ return packer.startup(function(use)
     -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   })
 
-  -- lsp
+  -- configuring lsp servers
   use({
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -71,8 +71,9 @@ return packer.startup(function(use)
     -- requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
   })
 
-  --null-ls
+  --formating & linting
   use('jose-elias-alvarez/null-ls.nvim')
+  use('jay-babu/mason-null-ls.nvim')
 
   -- treesitter
   use({

@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 treesitter.setup({
-  ensure_installed = {'lua', 'python', 'typescript', 'help', 'rust', 'vim', 'regex', 'json'},
+  ensure_installed = {'lua', 'python', 'typescript', 'javascript', 'help', 'rust', 'vim', 'regex', 'json'},
 
   highlight = { enable = true},
   indent = { enable = true},
