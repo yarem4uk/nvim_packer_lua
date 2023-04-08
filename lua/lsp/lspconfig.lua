@@ -23,9 +23,19 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {
-    -- compilerOptions = {
-    --   checkJs = false,
-    -- },
+    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    init_options = {
+      hostInfo = 'neovim',
+    },
+    javascript = {
+      checkJs = false,
+      completeFunctionCalls = false,
+      compilerOptions = {
+        checkJs = false,
+      },
+      importModuleSpecifierPreference = 'non-relative',
+      useCodeSnippetsOnMethodSuggest = false,
+    },
   },
   jsonls = {},
   lua_ls = {
@@ -63,14 +73,9 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({
   function(server_name)
-    -- if serner_name == 'tsserver' then
-    -- init_options = {
-    --     checkJs = true
-    -- },
-    -- end
     lspconfig[server_name].setup({
-      capabilities = require('lsp.handlers').capabilities,
       on_attach = require('lsp.handlers').on_attach,
+      capabilities = require('lsp.handlers').capabilities,
       settings = servers[server_name],
     })
   end,
