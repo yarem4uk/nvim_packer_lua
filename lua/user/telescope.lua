@@ -9,6 +9,7 @@ local builtin = require('telescope.builtin')
 telescope.setup({
   defaults = {
     -- sorting_strategy = 'ascending',
+    file_ignore_patterns = { 'node_modules', '.git' },
     path_display = { 'smart' },
     prompt_prefix = '-> ',
 

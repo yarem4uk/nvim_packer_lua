@@ -4,12 +4,10 @@ if not status_ok then
 end
 
 treesitter.setup({
-  ensure_installed = {'lua', 'python', 'typescript', 'javascript', 'help', 'rust', 'vim', 'regex', 'json'},
-
-  highlight = { enable = true},
-  indent = { enable = true},
+  ensure_installed = { 'lua', 'python', 'typescript', 'javascript', 'help', 'rust', 'vim', 'regex', 'json', 'css' },
+  highlight = { enable = true },
+  indent = { enable = true },
   additional_vim_regex_highlighting = true,
-
   -- textobjects = {
   --     move = {
   --       enable = true,

@@ -5,7 +5,7 @@ end
 
 local silent = { silent = true }
 
-require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/lua/luasnippets' })
+require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/snippets' })
 
 ls.config.set_config({
   history = true,

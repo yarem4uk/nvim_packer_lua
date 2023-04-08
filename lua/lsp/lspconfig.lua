@@ -1,3 +1,8 @@
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_ok then
+  return
+end
+
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not mason_lspconfig_ok then
   return
@@ -14,9 +19,14 @@ if not mason_null_ls_ok then
 end
 
 local servers = {
+  html = {},
   pyright = {},
   rust_analyzer = {},
-  tsserver = {},
+  tsserver = {
+    -- compilerOptions = {
+    --   checkJs = false,
+    -- },
+  },
   jsonls = {},
   lua_ls = {
     Lua = {
@@ -35,7 +45,17 @@ local servers = {
   },
 }
 
-mason.setup()
+require('lsp.handlers').setup()
+
+mason.setup({
+  ui = {
+    icons = {
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗',
+    },
+  },
+})
 
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
@@ -43,8 +63,12 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({
   function(server_name)
-    require('lspconfig')[server_name].setup({
-
+    -- if serner_name == 'tsserver' then
+    -- init_options = {
+    --     checkJs = true
+    -- },
+    -- end
+    lspconfig[server_name].setup({
       capabilities = require('lsp.handlers').capabilities,
       on_attach = require('lsp.handlers').on_attach,
       settings = servers[server_name],

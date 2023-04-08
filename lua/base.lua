@@ -59,13 +59,15 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.laststatus = 2
 
+opt.termguicolors = true
+
 -- everforest
--- g.everforeset_background = 'soft'
+-- g.everforeset_background = 'medium'
 -- g.everforest_transparent_background = 1
 
 -- gruvbox-material
-g.gruvbox_material_background = 'soft'
-g.gruvbox_material_transparent_background = 1
+-- g.gruvbox_material_background = 'soft'
+-- g.gruvbox_material_transparent_background = 1
 
 cmd([[
   au BufNewFile,BufRead *.ejs set ft=html

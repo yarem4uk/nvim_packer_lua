@@ -8,6 +8,8 @@ if not lua_ok then
   return
 end
 
+require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/snippets' })
+
 cmp.setup({
   -- completion = {
   -- autocomplete = false,
@@ -17,7 +19,6 @@ cmp.setup({
       ls.lsp_expand(args.body)
     end,
   },
-
   mapping = cmp.mapping.preset.insert({
     -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -26,7 +27,7 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-    ['<c-n>'] = cmp.mapping(function(fallback)
+    ['<c-p>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif ls.expand_or_jumpable() then
@@ -35,7 +36,7 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-    ['<c-p>'] = cmp.mapping(function(fallback)
+    ['<c-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif ls.jumpable(-1) then
@@ -50,3 +51,7 @@ cmp.setup({
     { name = 'luasnip' },
   },
 })
+
+vim.cmd([[
+  set completeopt=menuone,noinsert,noselect
+]])

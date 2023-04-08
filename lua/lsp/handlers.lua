@@ -1,5 +1,42 @@
 local M = {}
 
+M.setup = function()
+  local signs = {
+
+    { name = 'DiagnosticSignError', text = '✗' },
+    { name = 'DiagnosticSignWarn',  text = 'ί' },
+    { name = 'DiagnosticSignHint',  text = 'h' },
+    { name = 'DiagnosticSignInfo',  text = '?' },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
+  end
+
+  local config = {
+    -- disable virtual text
+    -- virtual_text = false,
+    -- virtual_lines = false,
+    -- show signs
+    signs = {
+      active = signs,
+    },
+    update_in_insert = false,
+    underline = false,
+    severity_sort = true,
+    -- float = {
+    --   focusable = true,
+    --   style = 'minimal',
+    --   border = 'rounded',
+    --   source = 'always',
+    --   header = '',
+    --   prefix = '',
+    -- },
+  }
+
+  vim.diagnostic.config(config)
+end
+
 M.keymap = function(bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -10,11 +47,12 @@ M.keymap = function(bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('<leader>K', vim.lsp.buf.hover, 'Hover Documentation')
-  -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  nmap('gd', '<cmd>Telescope lsp_definitions<cr>', '[G]oto [D]efinition')
+  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', '')
   nmap('gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', '')
+  nmap('<leader>dl', '<cmd>Telescope diagnostics<cr>', '')
 
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -29,12 +67,10 @@ M.keymap = function(bufnr)
   })
 end
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
   -- if client.name == 'tsserver' then
-  --   client.server_capabilities.document_formatting = false
-  --   client.server_capabilities.document_range_formatting = false
+  -- require('lsp-inlayhints').on_attach(client, bufnr)
   -- end
-
   M.keymap(bufnr)
 end
 

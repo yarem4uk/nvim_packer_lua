@@ -39,7 +39,7 @@ return packer.startup(function(use)
   -- themes
   --use('lifepillar/vim-gruvbox8')
   use('sainnhe/gruvbox-material')
-  -- use('sainnhe/everforest')
+  use('sainnhe/everforest')
 
   -- tree
   use({
@@ -62,6 +62,7 @@ return packer.startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   })
+  use('lvimuser/lsp-inlayhints.nvim')
 
   -- Autocompletion
   use({
