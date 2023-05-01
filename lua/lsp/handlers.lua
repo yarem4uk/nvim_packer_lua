@@ -77,6 +77,11 @@ end
 
 M.capabilities = function(name)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  if name == 'tsserver' then
+    capabilities.textDocument = capabilities.textDocument or {}
+    capabilities.textDocument.diagnostic = capabilities.textDocument.diagnostic or {}
+    capabilities.textDocument.diagnostic.disable = true
+  end
   return cmp_nvim_lsp.default_capabilities(capabilities)
 end
 
