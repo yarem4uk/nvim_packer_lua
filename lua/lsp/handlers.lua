@@ -2,7 +2,6 @@ local M = {}
 
 M.setup = function()
   local signs = {
-
     { name = 'DiagnosticSignError', text = '✗' },
     { name = 'DiagnosticSignWarn',  text = 'ί' },
     { name = 'DiagnosticSignHint',  text = 'h' },
@@ -15,14 +14,14 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    -- virtual_text = false,
+    virtual_text = false,
     -- virtual_lines = false,
     -- show signs
     signs = {
       active = signs,
     },
     update_in_insert = false,
-    underline = false,
+    underline = true,
     severity_sort = true,
     -- float = {
     --   focusable = true,
@@ -67,10 +66,7 @@ M.keymap = function(bufnr)
   })
 end
 
-M.on_attach = function(client, bufnr)
-  -- if client.name == 'tsserver' then
-  -- require('lsp-inlayhints').on_attach(client, bufnr)
-  -- end
+M.on_attach = function(_, bufnr)
   M.keymap(bufnr)
 end
 
@@ -79,8 +75,13 @@ if not cmp_ok then
   return
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = function(name)
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  return cmp_nvim_lsp.default_capabilities(capabilities)
+end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

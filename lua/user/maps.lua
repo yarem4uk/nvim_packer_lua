@@ -46,6 +46,8 @@ map('v', '"y', '"*y', silent)
 map('n', '"y', '"*y', silent)
 map('n', '"p', '"*p', silent)
 
+map('n', 'x', '"_x', silent)
+
 map('', 'Y', 'y$', silent)
 
 -- Make Ctrl-e jump to the end of the line in the insert mode.

@@ -22,21 +22,7 @@ local servers = {
   html = {},
   pyright = {},
   rust_analyzer = {},
-  tsserver = {
-    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
-    init_options = {
-      hostInfo = 'neovim',
-    },
-    javascript = {
-      checkJs = false,
-      completeFunctionCalls = false,
-      compilerOptions = {
-        checkJs = false,
-      },
-      importModuleSpecifierPreference = 'non-relative',
-      useCodeSnippetsOnMethodSuggest = false,
-    },
-  },
+  tsserver = {},
   jsonls = {},
   lua_ls = {
     Lua = {
@@ -75,8 +61,10 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
       on_attach = require('lsp.handlers').on_attach,
-      capabilities = require('lsp.handlers').capabilities,
+      capabilities = require('lsp.handlers').capabilities(server_name),
       settings = servers[server_name],
+      -- filetypes = { 'typescript', 'typescriptreact', 'javascript' },
+      -- cmd = { 'typescript-language-server', '--stdio' },
     })
   end,
 })
