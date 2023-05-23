@@ -14,7 +14,7 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = false,
+    virtual_text = true,
     -- virtual_lines = false,
     -- show signs
     signs = {
@@ -84,9 +84,5 @@ M.capabilities = function(name)
   end
   return cmp_nvim_lsp.default_capabilities(capabilities)
 end
-
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

@@ -65,6 +65,11 @@ ls.add_snippets('javascript', {
     { trig = 'fn', regTrig = true, hidden = true },
     fmta('const <> = (<>) <> {\n  <>\n<>}', { i(1, 'name'), i(2), t('=>'), i(3, 'statement'), i(0) })
   ),
+  --call back
+  s(
+    { trig = 'clb', regTrig = true, hidden = true },
+    fmta('(<>) <> {\n  <>\n<>}', { i(1), t('=>'), i(2, 'statement'), i(0) })
+  ),
   -- map
   s(
     { trig = '(%w+)%.map', regTrig = true, hidden = true },
