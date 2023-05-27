@@ -28,7 +28,7 @@ local f = ls.function_node
 
 ls.add_snippets('all', {
   s(
-    { trig = '(%w*[^douiI])mm', wordTrig = false, regTrig = true, hidden = false },
+    { trig = '(%w*[^douiI])mm', wordTrig = false, regTrig = true, hidden = true },
     fmta('<><><>', {
       f(function(_, snip)
         return snip.captures[1] .. '['
@@ -39,7 +39,7 @@ ls.add_snippets('all', {
   ),
 
   s(
-    { trig = '(%w*)jj', wordTrig = false, regTrig = true, hidden = false },
+    { trig = '(%w*)jj', wordTrig = false, regTrig = true, hidden = true },
     fmta('<><><>', {
       f(function(_, snip)
         return snip.captures[1] .. '('
@@ -49,12 +49,19 @@ ls.add_snippets('all', {
     })
   ),
 
+  s(
+    { trig = '(%w*)MM', wordTrig = false, regTrig = true, hidden = true },
+    fmta('<><><>', {
+      f(function(_, snip)
+        return snip.captures[1] .. '{'
+      end),
+      i(1),
+      t('}'),
+    })
+  ),
+
   s({ trig = '([^%a])dmm', wordTrig = false, regTrig = true, hidden = false }, fmt('[[{}]]{}', { i(1), i(0) })),
-
-  s({ trig = '([^%a])MM', regTrig = true, hidden = false }, fmta('{<>}<>', { i(1), i(0) })),
-
   s({ trig = '%.or', regTrig = true, hidden = true }, fmt('|| {}', { i(0) })),
-
   s({ trig = '%.and', regTrig = true, hidden = true }, fmt('&& {}', { i(0) })),
 
   s(
