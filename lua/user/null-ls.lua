@@ -9,7 +9,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local sources = {
 
   -- js
-  formatting.prettier,
+  formatting.prettierd,
   diagnostics.eslint_d,
 
   -- python

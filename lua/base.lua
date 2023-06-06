@@ -78,4 +78,4 @@ cmd([[
   autocmd bufread,bufnewfile *.html setl sts=2 sw=2 tw=79
 ]])
 
-cmd([[command! Curl set splitright | vnew | set filetype=sh | read !sh #]])
+cmd([[command! Curl set splitright | vnew | set filetype=json | read !sh #]])

@@ -87,6 +87,7 @@ map('n', '<leader>l', [[mQviwu'Q]], silent)
 
 -- curl
 map('n', '<leader>m', ':Curl<cr>', silent)
+map('n', '<leader>n', ':bd!<cr>', silent)
 
 map('v', '<leader>y', ':w! ~/.vbuf<cr>', silent)
 map('', '<leader>y', ':.w! ~/.vbuf<cr>', silent)
